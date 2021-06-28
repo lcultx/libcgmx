@@ -90,36 +90,57 @@ namespace cgmx {
 			float S = 0;
 
 			if (trace > 0) {
-				S = sqrtf(trace + 1.0) * 2;
-				out[3] = 0.25 * S;
+				S = sqrtf(trace + 1.0f) * 2;
+				out[3] = 0.25f * S;
 				out[0] = (mat[6] - mat[9]) / S;
 				out[1] = (mat[8] - mat[2]) / S;
 				out[2] = (mat[1] - mat[4]) / S;
 			}
 			else if ((mat[0] > mat[5]) & (mat[0] > mat[10])) {
-				S = sqrtf(1.0 + mat[0] - mat[5] - mat[10]) * 2;
+				S = sqrtf(1.0f + mat[0] - mat[5] - mat[10]) * 2;
 				out[3] = (mat[6] - mat[9]) / S;
-				out[0] = 0.25 * S;
+				out[0] = 0.25f * S;
 				out[1] = (mat[1] + mat[4]) / S;
 				out[2] = (mat[8] + mat[2]) / S;
 			}
 			else if (mat[5] > mat[10]) {
-				S = sqrtf(1.0 + mat[5] - mat[0] - mat[10]) * 2;
+				S = sqrtf(1.0f + mat[5] - mat[0] - mat[10]) * 2;
 				out[3] = (mat[8] - mat[2]) / S;
 				out[0] = (mat[1] + mat[4]) / S;
-				out[1] = 0.25 * S;
+				out[1] = 0.25f * S;
 				out[2] = (mat[6] + mat[9]) / S;
 			}
 			else {
-				S = sqrtf(1.0 + mat[10] - mat[0] - mat[5]) * 2;
+				S = sqrtf(1.0f + mat[10] - mat[0] - mat[5]) * 2;
 				out[3] = (mat[1] - mat[4]) / S;
 				out[0] = (mat[8] + mat[2]) / S;
 				out[1] = (mat[6] + mat[9]) / S;
-				out[2] = 0.25 * S;
+				out[2] = 0.25f * S;
 			}
 
 			return out;
 		};
+
+		float* fromScaling(float* out, float* v) {
+			out[0] = v[0];
+			out[1] = 0;
+			out[2] = 0;
+			out[3] = 0;
+			out[4] = 0;
+			out[5] = v[1];
+			out[6] = 0;
+			out[7] = 0;
+			out[8] = 0;
+			out[9] = 0;
+			out[10] = v[2];
+			out[11] = 0;
+			out[12] = 0;
+			out[13] = 0;
+			out[14] = 0;
+			out[15] = 1;
+			return out;
+		};
+
 
 		float* fromRotationTranslationScale(float* out, float* q, float* v, float* s) {
 			// Quaternion math

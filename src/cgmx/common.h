@@ -5,7 +5,7 @@
 #include <vector>
 
 namespace cgmx {
-  //float const PI = 3.141592653589793;
+
 
   //float const degree = PI / 180.0;
 
@@ -13,7 +13,6 @@ namespace cgmx {
   //  return a * degree;
   //};
 
-  float const EPSILON = 0.000001;
 
   // sizes
   int const VEC_SIZE_3 = 3;
@@ -26,6 +25,18 @@ namespace cgmx {
     float* getTranslation(float* out, float* mat);
     float* getScaling(float* out, float* mat);
     float* getRotation(float* out, float* mat);
+    float* fromScaling(float* out, float* v);
     float* fromRotationTranslationScale(float* out, float* q, float* v, float* s);
+  }
+
+  namespace vec3 {
+    float* create();
+    float* fromValues(float x, float y, float z) ;
+  }
+
+  namespace vec4 {
+	  float* create();
+	  float* fromValues(float x, float y, float z, float w);
+      float* fromRotator(float* rotator);
   }
 }
