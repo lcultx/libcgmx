@@ -22,5 +22,10 @@ namespace cgmx {
 
   namespace mat4 {
     float* create();
+    float* multiply(float* out, float* a, float* b);
+    float* getTranslation(float* out, float* mat);
+    float* getScaling(float* out, float* mat);
+    float* getRotation(float* out, float* mat);
+    float* fromRotationTranslationScale(float* out, float* q, float* v, float* s);
   }
 }
