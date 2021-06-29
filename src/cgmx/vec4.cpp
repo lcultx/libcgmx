@@ -1,6 +1,8 @@
 #include <math.h>
 #include <stdlib.h>   
+#include <iostream>
 #include "common.h"
+using namespace std;
 
 namespace cgmx {
     namespace vec4 {
@@ -44,6 +46,8 @@ namespace cgmx {
 			return out;
         }
 
-
+		void log(string name, float* v) {
+			cout << "v " << name << " : " << v[0] << " " << v[1] << " " << v[2] << " " << v[3] << "\n";
+		}
     }
 }

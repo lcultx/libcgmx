@@ -1,7 +1,9 @@
 #include <math.h>
 #include <stdlib.h>   
+#include <iostream>
 #include "common.h"
 
+using namespace std;
 namespace cgmx {
     namespace vec3 {
         float* create(){
@@ -19,5 +21,9 @@ namespace cgmx {
             out[2] = z;
             return out;
         };
+
+         void log(string name, float* v) {
+             cout << "v " << name << " : " << v[0] << " " << v[1] << " " << v[2] << "\n";
+         }
     }
 }

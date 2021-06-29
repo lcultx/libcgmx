@@ -3,7 +3,8 @@
 #include <exception>
 #include <functional>
 #include <vector>
-
+#include <string>
+using namespace std;
 namespace cgmx {
 
 
@@ -27,16 +28,19 @@ namespace cgmx {
     float* getRotation(float* out, float* mat);
     float* fromScaling(float* out, float* v);
     float* fromRotationTranslationScale(float* out, float* q, float* v, float* s);
+    void log(string name, float* v);
   }
 
   namespace vec3 {
     float* create();
     float* fromValues(float x, float y, float z) ;
+    void log(string name, float* v);
   }
 
   namespace vec4 {
 	  float* create();
 	  float* fromValues(float x, float y, float z, float w);
       float* fromRotator(float* rotator);
+      void log(string name, float* v);
   }
 }

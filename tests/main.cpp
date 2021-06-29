@@ -14,15 +14,22 @@ int main()
 
     auto oldRotate = vec4::fromRotator(vec3::fromValues(0,0,90));
 
-    cout << "oldRotate: " << oldRotate[0] << " " << oldRotate[1] << " " << oldRotate[2] << " " << oldRotate[3];
-    auto m = mat4::fromRotationTranslationScale(mat4::create(), oldRotate, vec3::fromValues(0,0,0), vec3::fromValues(1,1,1));
-    float* flipY =  mat4::fromScaling(mat4::create(), vec3::fromValues(0,-1,0));
+    vec4::log("oldRotate", oldRotate);
 
-    m = mat4::multiply(mat4::create(), flipY, m);
-    m = mat4::multiply(mat4::create(), m, flipY);
+    
+    auto m = mat4::fromRotationTranslationScale(mat4::create(), oldRotate, vec3::fromValues(0,0,0), vec3::fromValues(1,1,1));
+
+    mat4::log("m", m);
+	float* flipY = mat4::fromScaling(mat4::create(), vec3::fromValues(1, -1, 1));
+
+	m = mat4::multiply(mat4::create(), flipY, m);
+	mat4::log("m", m);
+	m = mat4::multiply(mat4::create(), m, flipY);
+	mat4::log("m", m);
     auto newRotate = vec4::create();
     mat4::getRotation(newRotate, m);
 
-    cout << "newRotate: " << newRotate[0] << " " << newRotate[1] << " " << newRotate[2] << " " << newRotate[3];
+    vec4::log("newRotate", newRotate);
+
     cout << "done";
 }

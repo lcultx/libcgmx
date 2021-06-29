@@ -1,7 +1,8 @@
+#include <iostream>
 #include <math.h>
 #include <stdlib.h>   
 #include "common.h"
-
+using namespace std;
 namespace cgmx {
     namespace mat4 {
         float* create() {
@@ -24,6 +25,14 @@ namespace cgmx {
 			out[15] = 1;
 			return out;
         }
+
+		void log(string name, float* mat) {
+			cout << "mat " << name << " : \n";
+			cout << " " << mat[0] << " " << mat[1] << " " << mat[2] << " " << mat[3] << "\n";
+			cout << " " << mat[4] << " " << mat[5] << " " << mat[6] << " " << mat[7] << "\n";
+			cout << " " << mat[8] << " " << mat[9] << " " << mat[10] << " " << mat[11] << "\n";
+			cout << " " << mat[12] << " " << mat[13] << " " << mat[14] << " " << mat[15] << "\n";
+		}
 
 		float* multiply(float* out, float* a, float* b) {
 			float a00 = a[0], a01 = a[1], a02 = a[2], a03 = a[3];
